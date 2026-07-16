@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="820" viewBox="0 0 1200 820" role="img" aria-label="Click-Kaar Lens photography placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#111111"/>
+      <stop offset="0.52" stop-color="#ff9700"/>
+      <stop offset="1" stop-color="#fdfdfc"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="820" fill="url(#g)"/>
+  <circle cx="880" cy="260" r="145" fill="#ffffff" opacity=".24"/>
+  <rect x="132" y="170" width="510" height="360" rx="28" fill="#111111" opacity=".78"/>
+  <circle cx="386" cy="350" r="116" fill="none" stroke="#ffffff" stroke-width="34" opacity=".86"/>
+  <circle cx="386" cy="350" r="42" fill="#ff9700"/>
+  <text x="132" y="625" fill="#ffffff" font-family="Arial, sans-serif" font-size="58" font-weight="700">Click-Kaar Lens</text>
+</svg>
