@@ -11,7 +11,7 @@ import { ImageCardComponent, SectionHeadingComponent } from '../../../shared/com
   imports: [CommonModule, SectionHeadingComponent, ImageCardComponent],
   template: `
     <section class="sub-hero"><h1>{{ title }}</h1><p>{{ text }}</p></section>
-    <section class="page-section"><app-section-heading [title]="title" [text]="text" /><div class="card-grid"><app-image-card *ngFor="let item of categories" [title]="item.title" [text]="item.description" [image]="item.heroImage" [link]="'/lens/' + routeGroup + '/' + item.slug" [chip]="title" /></div></section>
+    <section class="page-section"><app-section-heading [title]="title" [text]="text" /><div class="card-grid"><app-image-card *ngFor="let item of categories" [title]="item.title" [text]="item.description" [image]="item.heroImage" [link]="'/' + routeGroup + '/' + item.slug" [chip]="title" /></div></section>
   `
 })
 export class CategoryListPageComponent implements OnInit {

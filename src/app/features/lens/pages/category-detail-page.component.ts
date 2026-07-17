@@ -17,9 +17,9 @@ import { EnquiryFormComponent, GalleryGridComponent } from '../../../shared/comp
       <section class="page-section tinted"><h2>Packages</h2><div class="card-grid compact"><article class="plain-card" *ngFor="let pack of category.packages"><h3>{{ pack.name }}</h3><p>{{ pack.description }}</p><ul><li *ngFor="let feature of pack.features">{{ feature }}</li></ul></article></div></section>
       <section class="page-section"><h2>FAQs</h2><details *ngFor="let faq of category.faqs"><summary>{{ faq.question }}</summary><p>{{ faq.answer }}</p></details></section>
       <section id="enquiry" class="page-section form-section"><app-enquiry-form [presetCategory]="category.title" [source]="'lens-' + category.slug" /></section>
-      <section class="cta-band"><h2>Prefer a quick conversation?</h2><a class="btn primary" routerLink="/lens/contact" [queryParams]="{ type: category.slug }">WhatsApp or call us</a></section>
+      <section class="cta-band"><h2>Prefer a quick conversation?</h2><a class="btn primary" routerLink="/contact" [queryParams]="{ type: category.slug }">WhatsApp or call us</a></section>
     </ng-container>
-    <ng-template #invalid><section class="sub-hero"><h1>We could not find that Lens service.</h1><p>Explore all services and choose the closest match.</p><a class="btn primary" routerLink="/lens">Back to Lens</a></section></ng-template>
+    <ng-template #invalid><section class="sub-hero"><h1>We could not find that Lens service.</h1><p>Explore all services and choose the closest match.</p><a class="btn primary" routerLink="/">Back to Lens</a></section></ng-template>
   `
 })
 export class CategoryDetailPageComponent implements OnInit {

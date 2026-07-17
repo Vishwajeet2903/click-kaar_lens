@@ -11,7 +11,7 @@ import { legalPages } from '../data/lens-content.data';
     <section class="sub-hero"><h1>{{ title }}</h1><p>{{ intro }}</p></section>
     <section class="page-section content-page">
       <p *ngFor="let block of body">{{ block }}</p>
-      <a class="btn primary" routerLink="/lens/contact">Contact Click-Kaar Lens</a>
+      <a class="btn primary" routerLink="/contact">Contact Click-Kaar Lens</a>
     </section>
   `
 })

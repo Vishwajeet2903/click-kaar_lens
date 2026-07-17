@@ -26,7 +26,7 @@ import { LensSeoService } from '../../../core/services/lens-seo.service';
           </div>
           <p class="form-status success" *ngIf="success">{{ success }}</p>
           <button class="btn primary" type="submit" [disabled]="form.invalid">{{ success ? 'Ready' : 'Login' }}</button>
-          <a class="auth-link" routerLink="/lens/contact">Need help accessing your account?</a>
+          <a class="auth-link" routerLink="/contact">Need help accessing your account?</a>
         </form>
       </div>
     </section>

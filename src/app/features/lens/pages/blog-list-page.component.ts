@@ -12,8 +12,8 @@ import { LensSeoService } from '../../../core/services/lens-seo.service';
     <section class="sub-hero"><h1>Lens Blog</h1><p>Planning guides for better shoots and smoother production.</p></section>
     <section class="page-section">
       <input class="search-input" [formControl]="search" placeholder="Search articles" aria-label="Search articles" />
-      <article class="featured-post" *ngIf="content.blogPosts[0] as featured"><img [src]="featured.image" [alt]="featured.title" /><div><p>{{ featured.category }} - {{ featured.readingTime }}</p><h2>{{ featured.title }}</h2><p>{{ featured.excerpt }}</p><a class="btn primary" [routerLink]="['/lens/blog', featured.slug]">Read article</a></div></article>
-      <div class="card-grid compact" *ngIf="filtered.length; else empty"><a class="plain-card" *ngFor="let post of filtered" [routerLink]="['/lens/blog', post.slug]"><img [src]="post.image" [alt]="post.title" /><strong>{{ post.title }}</strong><span>{{ post.author }} - {{ post.publishedAt }} - {{ post.readingTime }}</span><p>{{ post.excerpt }}</p></a></div>
+      <article class="featured-post" *ngIf="content.blogPosts[0] as featured"><img [src]="featured.image" [alt]="featured.title" /><div><p>{{ featured.category }} - {{ featured.readingTime }}</p><h2>{{ featured.title }}</h2><p>{{ featured.excerpt }}</p><a class="btn primary" [routerLink]="['/blog', featured.slug]">Read article</a></div></article>
+      <div class="card-grid compact" *ngIf="filtered.length; else empty"><a class="plain-card" *ngFor="let post of filtered" [routerLink]="['/blog', post.slug]"><img [src]="post.image" [alt]="post.title" /><strong>{{ post.title }}</strong><span>{{ post.author }} - {{ post.publishedAt }} - {{ post.readingTime }}</span><p>{{ post.excerpt }}</p></a></div>
       <ng-template #empty><p class="empty-state">No articles found.</p></ng-template>
     </section>
   `

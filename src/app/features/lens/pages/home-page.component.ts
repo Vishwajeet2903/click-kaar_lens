@@ -22,7 +22,7 @@ import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.
           <li>Gear-aware planning</li>
           <li>Creator-ready packages</li>
         </ul>
-        <div class="actions"><a class="btn primary" href="#enquiry">Plan a Shoot</a><a class="btn ghost" routerLink="/lens/ideas">View Sample Shoots</a></div>
+        <div class="actions"><a class="btn primary" href="#enquiry">Plan a Shoot</a><a class="btn ghost" routerLink="/ideas">View Sample Shoots</a></div>
       </div>
     </section>
     <section class="page-section requirement-section" appScrollReveal="fade-up">
@@ -59,7 +59,7 @@ import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.
           <em>Explore</em>
         </a>
       </div>
-      <div class="section-actions"><a class="btn primary" routerLink="/lens/services">View all services</a></div>
+      <div class="section-actions"><a class="btn primary" routerLink="/services">View all services</a></div>
     </section>
     <section class="page-section why-choose-section" appScrollReveal="slide-right">
       <app-section-heading eyebrow="Why choose us" title="Built for smoother shoots" text="The Click-Kaar Lens flow is designed for people who need dependable planning, clear coordination and polished visual output." />
@@ -188,7 +188,7 @@ export class HomePageComponent implements OnInit {
   }
 
   serviceLink(item: { group: string; slug: string }): string {
-    return item.group === 'business' ? `/lens/business/${item.slug}` : `/lens/occasions/${item.slug}`;
+    return item.group === 'business' ? `/business/${item.slug}` : `/occasions/${item.slug}`;
   }
 
   get renderedReviews() {

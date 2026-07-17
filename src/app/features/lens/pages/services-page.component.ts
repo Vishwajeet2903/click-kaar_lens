@@ -35,6 +35,6 @@ export class ServicesPageComponent implements OnInit {
   }
 
   serviceLink(item: LensCategory): string {
-    return item.group === 'business' ? `/lens/business/${item.slug}` : `/lens/occasions/${item.slug}`;
+    return item.group === 'business' ? `/business/${item.slug}` : `/occasions/${item.slug}`;
   }
 }

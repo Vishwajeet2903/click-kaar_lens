@@ -11,16 +11,16 @@ import { EnquiryFormComponent } from '../../../shared/components/lens-ui.compone
   imports: [CommonModule, RouterLink, EnquiryFormComponent],
   template: `
     <article class="article" *ngIf="post; else missing">
-      <a routerLink="/lens/blog">Back to blog</a>
+      <a routerLink="/blog">Back to blog</a>
       <h1>{{ post.title }}</h1>
       <p>{{ post.author }} - {{ post.publishedAt }} - {{ post.readingTime }}</p>
       <img [src]="post.image" [alt]="post.title" />
       <nav aria-label="Article sections"><a *ngFor="let block of post.content; index as i" [href]="'#section-' + i">Section {{ i + 1 }}</a></nav>
       <section *ngFor="let block of post.content; index as i" [id]="'section-' + i"><h2>{{ block.split('.')[0] }}</h2><p>{{ block }}</p></section>
-      <div class="cta-band"><h2>Need help planning a shoot?</h2><a class="btn primary" routerLink="/lens/contact">Talk to Click-Kaar Lens</a></div>
+      <div class="cta-band"><h2>Need help planning a shoot?</h2><a class="btn primary" routerLink="/contact">Talk to Click-Kaar Lens</a></div>
       <app-enquiry-form source="lens-blog" />
     </article>
-    <ng-template #missing><section class="sub-hero"><h1>Article not found</h1><a class="btn primary" routerLink="/lens/blog">View blog</a></section></ng-template>
+    <ng-template #missing><section class="sub-hero"><h1>Article not found</h1><a class="btn primary" routerLink="/blog">View blog</a></section></ng-template>
   `
 })
 export class BlogDetailPageComponent implements OnInit {

@@ -12,24 +12,24 @@ import { businessCategories, occasionCategories } from './data/lens-content.data
   imports: [CommonModule, RouterOutlet, RouterLink, RouterLinkActive, FloatingContactComponent, ScrollRevealDirective],
   template: `
     <header class="site-header">
-      <a class="brand" routerLink="/lens" aria-label="Click-Kaar Lens home">
+      <a class="brand" routerLink="/" aria-label="Click-Kaar Lens home">
         <img class="brand-logo" src="assets/images/lens/clickkaar-lens-logo.png" alt="Click-Kaar Lens" width="220" height="88" />
       </a>
       <button class="menu-toggle" type="button" [attr.aria-expanded]="mobileOpen" aria-controls="lens-nav" (click)="toggleMobile()">Menu</button>
       <nav id="lens-nav" [class.open]="mobileOpen" aria-label="Lens navigation">
-        <a routerLink="/lens" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
         <div class="nav-group" (mouseenter)="openMenu = 'business'" (mouseleave)="openMenu = ''">
           <button type="button" [attr.aria-expanded]="openMenu === 'business'" (click)="toggleMenu('business')">Business</button>
           <div class="mega" *ngIf="openMenu === 'business'">
-            <a *ngFor="let item of business" [routerLink]="['/lens/business', item.slug]">{{ item.title }}</a>
+            <a *ngFor="let item of business" [routerLink]="['/business', item.slug]">{{ item.title }}</a>
           </div>
         </div>
-        <a routerLink="/lens/ideas" routerLinkActive="active">Ideas</a>
-        <a routerLink="/lens/blog" routerLinkActive="active">Blog</a>
-        <a routerLink="/lens/about" routerLinkActive="active">About</a>
-        <a routerLink="/lens/contact" routerLinkActive="active">Contact</a>
-        <a routerLink="/lens/login" routerLinkActive="active">Login</a>
-        <a class="nav-cta" routerLink="/lens/contact">Enquire Now </a>
+        <a routerLink="/ideas" routerLinkActive="active">Ideas</a>
+        <a routerLink="/blog" routerLinkActive="active">Blog</a>
+        <a routerLink="/about" routerLinkActive="active">About</a>
+        <a routerLink="/contact" routerLinkActive="active">Contact</a>
+        <a routerLink="/login" routerLinkActive="active">Login</a>
+        <a class="nav-cta" routerLink="/contact">Enquire Now </a>
       </nav>
     </header>
     <main><router-outlet /></main>
@@ -40,18 +40,18 @@ import { businessCategories, occasionCategories } from './data/lens-content.data
             <p class="eyebrow">Click-Kaar Lens</p>
             <h2>Ready to plan your next visual story?</h2>
             <div class="footer-actions">
-              <a routerLink="/lens/services" class="footer-btn dark">Start exploring</a>
-              <a routerLink="/lens/contact" class="footer-btn light">Talk to us</a>
+              <a routerLink="/services" class="footer-btn dark">Start exploring</a>
+              <a routerLink="/contact" class="footer-btn light">Talk to us</a>
             </div>
           </div>
         </section>
         <div class="footer-grid" appScrollReveal="fade-up">
-          <nav aria-label="Occasion photography links"><h3>Occasions</h3><a *ngFor="let item of occasions" [routerLink]="['/lens/occasions', item.slug]">{{ item.shortTitle }}</a></nav>
-          <nav aria-label="Business photography links"><h3>Business</h3><a *ngFor="let item of business" [routerLink]="['/lens/business', item.slug]">{{ item.shortTitle }}</a></nav>
-          <nav aria-label="Company links"><h3>Company</h3><a routerLink="/lens/about">About us</a><a routerLink="/lens/contact">Contact</a><a routerLink="/lens/partners">Partners</a><a routerLink="/lens/legal/privacy">Privacy Policy</a></nav>
+          <nav aria-label="Occasion photography links"><h3>Occasions</h3><a *ngFor="let item of occasions" [routerLink]="['/occasions', item.slug]">{{ item.shortTitle }}</a></nav>
+          <nav aria-label="Business photography links"><h3>Business</h3><a *ngFor="let item of business" [routerLink]="['/business', item.slug]">{{ item.shortTitle }}</a></nav>
+          <nav aria-label="Company links"><h3>Company</h3><a routerLink="/about">About us</a><a routerLink="/contact">Contact</a><a routerLink="/partners">Partners</a><a routerLink="/legal/privacy">Privacy Policy</a></nav>
           <nav aria-label="Contact links"><h3>Support</h3><a [href]="'tel:' + phone">{{ phone }}</a><a [href]="'mailto:' + email">{{ email }}</a><a [href]="social.instagram" target="_blank" rel="noopener noreferrer">Instagram</a><button type="button" (click)="toTop()">Back to top</button></nav>
         </div>
-        <div class="footer-bottom"><span>Copyright (c) 2026 CLICK-KAAR LLP.</span><a routerLink="/lens/legal/terms">Terms & Conditions</a></div>
+        <div class="footer-bottom"><span>Copyright (c) 2026 CLICK-KAAR LLP.</span><a routerLink="/legal/terms">Terms & Conditions</a></div>
       </div>
     </footer>
     <app-floating-contact />
