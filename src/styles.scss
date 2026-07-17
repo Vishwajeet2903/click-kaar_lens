@@ -629,15 +629,20 @@ main { padding-top: 0; }
 .stat { padding: 36px 18px; background: var(--panel); text-align: center; }
 .stat strong { display: block; font-size: clamp(2rem, 4vw, 3.5rem); color: var(--ink); font-weight: 950; }
 
-.filter-row, .filter-panel { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 22px; }
+.filter-row, .filter-panel { align-items: center; display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
 .filter-row button, .filter-panel button, .filter-panel input, .filter-panel select, .search-input {
-  min-height: 44px;
+  min-height: 38px;
   border: 1px solid var(--line);
   border-radius: 999px;
   background: var(--panel);
-  padding: 10px 14px;
+  padding: 8px 12px;
+  width: auto;
   font-weight: 800;
+  font-size: .88rem;
 }
+.filter-panel input, .search-input { flex: 0 1 220px; }
+.filter-panel select { flex: 0 1 160px; }
+.filter-panel button, .filter-row button { flex: 0 0 auto; }
 .filter-row button.active { background: var(--ink); color: white; }
 .gallery-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .gallery-card, .idea-card { text-align: left; border: 1px solid rgba(17,17,17,.06); border-radius: 20px; padding: 0; overflow: hidden; background: var(--panel-soft); cursor: pointer; }
@@ -808,6 +813,9 @@ input:focus, select:focus, textarea:focus { background: white; border-color: rgb
   .footer-top, .footer-grid { grid-template-columns: 1fr 1fr; }
   .card-grid.compact { grid-template-columns: 1fr; }
   .stats-band { grid-template-columns: repeat(2, 1fr); }
+  .filter-row, .filter-panel { gap: 7px; }
+  .filter-panel input, .search-input { flex-basis: min(100%, 190px); }
+  .filter-panel select { flex-basis: min(48%, 150px); }
   .form-grid { grid-template-columns: 1fr; }
   .floating-contact .mobile-call { display: inline-flex; }
   .hero { min-height: min(560px, calc(100vh - 96px)); }
