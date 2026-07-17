@@ -1,0 +1,266 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Length 1712 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+72 742 Td
+/F2 20 Tf
+(CLICK-KAAR Lens Project Brief) Tj
+0 -30 Td
+/F1 10 Tf
+14 TL
+0 -6 Td
+/F2 12 Tf
+(Overview) Tj
+0 -18 Td
+/F1 10 Tf
+(CLICK-KAAR Lens is an Angular 18 single-page web application for booking photography,) Tj
+0 -14 Td
+(visual content, and creator-production services. It presents occasion and business shoot) Tj
+0 -14 Td
+(categories, supports enquiry capture, showcases ideas and blog content, and provides) Tj
+0 -14 Td
+(login/register entry points for future account workflows.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Business Purpose) Tj
+0 -18 Td
+/F1 10 Tf
+(The app acts as a customer-facing photography marketplace module for CLICK-KAAR LLP. It) Tj
+0 -14 Td
+(helps users explore shoot services, understand available categories, submit) Tj
+0 -14 Td
+(requirements, contact the team through forms or WhatsApp, and browse planning content) Tj
+0 -14 Td
+(before booking.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Current Routing) Tj
+0 -18 Td
+/F1 10 Tf
+(The application is mounted at the site root. Primary routes include Home, Services,) Tj
+0 -14 Td
+(Occasions, Business, Ideas, Blog, About, Contact, Login, Register, Partners, Join roles,) Tj
+0 -14 Td
+(and Legal pages. SPA refresh support is configured through Vercel rewrites and Netlify-) Tj
+0 -14 Td
+(style _redirects.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Technology Stack) Tj
+0 -18 Td
+/F1 10 Tf
+(Angular 18 standalone components, Angular Router, Reactive Forms, RxJS, TypeScript 5.5,) Tj
+0 -14 Td
+(SCSS styling, Karma/Jasmine test setup, and static assets under src/assets and public.) Tj
+0 -14 Td
+(The app is API-ready but can run with mock lead submission based on environment) Tj
+0 -14 Td
+(settings.) Tj
+0 -14 Td
+0 -8 Td
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Length 1909 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+72 742 Td
+/F2 20 Tf
+(Core Features) Tj
+0 -30 Td
+/F1 10 Tf
+14 TL
+0 -6 Td
+/F2 12 Tf
+(Customer Experience) Tj
+0 -18 Td
+/F1 10 Tf
+(The home page includes a hero, quick requirement form, popular services, service) Tj
+0 -14 Td
+(discovery, why-choose-us content, customer reviews, and a review submission UI.) Tj
+0 -14 Td
+(Navigation is responsive and mobile selections now close the menu after a link is) Tj
+0 -14 Td
+(selected.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Service Catalogue) Tj
+0 -18 Td
+/F1 10 Tf
+(The catalogue is data-driven. Occasion categories include Wedding, Pre-Wedding,) Tj
+0 -14 Td
+(Maternity, Baby and Kids, Vacation, and Birthday/Parties. Business categories include) Tj
+0 -14 Td
+(Food Photography, Interior Photography, Product Photography, Corporate Events, Brand) Tj
+0 -14 Td
+(Videos, and Profile/Headshots.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Forms and Lead Flow) Tj
+0 -18 Td
+/F1 10 Tf
+(Reusable enquiry and requirement forms validate Indian mobile numbers, required fields,) Tj
+0 -14 Td
+(preferred dates, consent, and message length. LensLeadService submits to configured) Tj
+0 -14 Td
+(backend endpoints when available, otherwise it returns delayed mock responses for) Tj
+0 -14 Td
+(frontend testing.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Authentication Screens) Tj
+0 -18 Td
+/F1 10 Tf
+(Login and Register pages are present as UI-ready forms. They validate user input and are) Tj
+0 -14 Td
+(prepared for future authentication API integration. Both use the existing visual) Tj
+0 -14 Td
+(language and shared auth layout.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Content and SEO) Tj
+0 -18 Td
+/F1 10 Tf
+(Content is centralized in lens-content.data.ts. LensSeoService updates page titles,) Tj
+0 -14 Td
+(descriptions, Open Graph tags, canonical links, Twitter card metadata, and optional) Tj
+0 -14 Td
+(JSON-LD schema for richer search presentation.) Tj
+0 -14 Td
+0 -8 Td
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 1649 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+72 742 Td
+/F2 20 Tf
+(Implementation Notes) Tj
+0 -30 Td
+/F1 10 Tf
+14 TL
+0 -6 Td
+/F2 12 Tf
+(Reusable UI) Tj
+0 -18 Td
+/F1 10 Tf
+(Shared standalone components include section headings, image cards, stats counters,) Tj
+0 -14 Td
+(gallery grid with modal preview, enquiry form, post requirement form, and floating) Tj
+0 -14 Td
+(WhatsApp contact. Scroll reveal directives add lightweight motion.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Deployment) Tj
+0 -18 Td
+/F1 10 Tf
+(The production build outputs to dist/click-kaar-lens. vercel.json rewrites all requests) Tj
+0 -14 Td
+(to index.html for client-side routing. public/_redirects provides an equivalent fallback) Tj
+0 -14 Td
+(for Netlify-style static hosting.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Assets) Tj
+0 -18 Td
+/F1 10 Tf
+(Brand logos, service artwork, OG images, and photography visuals live under) Tj
+0 -14 Td
+(src/assets/images. The floating WhatsApp button uses an inline brand glyph. The) Tj
+0 -14 Td
+(login/register visual uses the photographer/camera asset.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Known Next Steps) Tj
+0 -18 Td
+/F1 10 Tf
+(Connect login/register to real authentication, replace placeholder Picsum gallery images) Tj
+0 -14 Td
+(with final portfolio assets, connect lead and partner forms to production APIs, verify) Tj
+0 -14 Td
+(business metrics, and expand tests around route behavior and form submissions.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Build Command) Tj
+0 -18 Td
+/F1 10 Tf
+(Use npm.cmd run build on Windows or npm run build in a standard shell. The latest build) Tj
+0 -14 Td
+(completed successfully during brief generation.) Tj
+0 -14 Td
+0 -8 Td
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 9 0 R >>
+endobj
+xref
+0 11
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000134 00000 n 
+0000000204 00000 n 
+0000000279 00000 n 
+0000002043 00000 n 
+0000002179 00000 n 
+0000004140 00000 n 
+0000004276 00000 n 
+0000005977 00000 n 
+trailer
+<< /Size 11 /Root 1 0 R >>
+startxref
+6114
+%%EOF

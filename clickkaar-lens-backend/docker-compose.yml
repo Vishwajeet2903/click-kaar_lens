@@ -1,0 +1,35 @@
+services:
+  mysql:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: clickkaar_lens
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: clickkaar
+      MYSQL_PASSWORD: clickkaar_password
+    ports:
+      - "3306:3306"
+    volumes:
+      - clickkaar_lens_mysql:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-uroot", "-proot"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+  backend:
+    build: .
+    depends_on:
+      mysql:
+        condition: service_healthy
+    environment:
+      PORT: 8080
+      DB_URL: jdbc:mysql://mysql:3306/clickkaar_lens?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=Asia/Kolkata
+      DB_USERNAME: clickkaar
+      DB_PASSWORD: clickkaar_password
+      JWT_SECRET: change-this-compose-secret-change-this-compose-secret
+      ADMIN_EMAIL: admin@click-kaar.com
+      ADMIN_PASSWORD: Admin@12345
+      FRONTEND_URL: http://localhost:4200
+    ports:
+      - "8080:8080"
+volumes:
+  clickkaar_lens_mysql:

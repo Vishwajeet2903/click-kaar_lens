@@ -1,0 +1,5 @@
+package com.clickkaar.lens.enums;
+
+public enum BookingStatus {
+  PENDING, UNDER_REVIEW, QUOTATION_SENT, CONFIRMED, ASSIGNED, IN_PROGRESS, COMPLETED, CANCELLED, REJECTED
+}

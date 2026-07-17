@@ -9,8 +9,8 @@ export const environment = {
     partner: '/api/partners/business'
   },
   mockData: true,
-  whatsappNumber: '919999999999',
-  contactPhone: '+91 99999 99999',
+  whatsappNumber: '919096820033',
+  contactPhone: '+91 9096820033',
   contactEmail: 'lens@click-kaar.com',
   socialLinks: {
     instagram: 'https://instagram.com/clickkaar',

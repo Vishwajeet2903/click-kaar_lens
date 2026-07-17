@@ -1,0 +1,358 @@
+%PDF-1.4
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R 12 0 R] /Count 4 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+5 0 obj
+<< /Length 1104 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+64 742 Td
+/F2 20 Tf
+(CLICK-KAAR Lens API Docs) Tj
+0 -30 Td
+/F1 10 Tf
+0 -6 Td
+/F2 12 Tf
+(Swagger URLs) Tj
+0 -18 Td
+/F1 10 Tf
+(Local Swagger UI: http://localhost:8080/swagger-ui.html) Tj
+0 -14 Td
+(OpenAPI JSON: http://localhost:8080/v3/api-docs) Tj
+0 -14 Td
+(Health Check: http://localhost:8080/actuator/health) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Base URL) Tj
+0 -18 Td
+/F1 10 Tf
+(Local backend base URL: http://localhost:8080) Tj
+0 -14 Td
+(All main APIs start with: /api/v1) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Response Format) Tj
+0 -18 Td
+/F1 10 Tf
+(Most successful responses return success, message, data, timestamp, and statusCode. List) Tj
+0 -14 Td
+(APIs use pagination fields such as content, pageNumber, pageSize, totalElements, totalPages,) Tj
+0 -14 Td
+(first, and last.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Authentication) Tj
+0 -18 Td
+/F1 10 Tf
+(Register or login to receive an access token and refresh token. For protected APIs, send the) Tj
+0 -14 Td
+(access token in the Authorization header like this: Authorization: Bearer YOUR_ACCESS_TOKEN.) Tj
+0 -14 Td
+0 -8 Td
+ET
+endstream
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 5 0 R >>
+endobj
+7 0 obj
+<< /Length 2207 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+64 742 Td
+/F2 20 Tf
+(Public APIs) Tj
+0 -30 Td
+/F1 10 Tf
+0 -6 Td
+/F2 12 Tf
+(Auth APIs) Tj
+0 -18 Td
+/F1 10 Tf
+(POST /api/v1/auth/register - create a customer account.) Tj
+0 -14 Td
+(POST /api/v1/auth/login - login with email and password.) Tj
+0 -14 Td
+(POST /api/v1/auth/refresh-token - get a new access token.) Tj
+0 -14 Td
+(POST /api/v1/auth/forgot-password - request password reset.) Tj
+0 -14 Td
+(POST /api/v1/auth/reset-password - reset password.) Tj
+0 -14 Td
+(GET /api/v1/auth/me - get logged-in user details.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Service Browsing) Tj
+0 -18 Td
+/F1 10 Tf
+(GET /api/v1/services - list service categories.) Tj
+0 -14 Td
+(GET /api/v1/services/{slug} - get one service.) Tj
+0 -14 Td
+(GET /api/v1/occasions - list occasion categories.) Tj
+0 -14 Td
+(GET /api/v1/occasions/{slug} - get one occasion.) Tj
+0 -14 Td
+(GET /api/v1/business - list business categories.) Tj
+0 -14 Td
+(GET /api/v1/business/{slug} - get one business category.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Lead and Contact) Tj
+0 -18 Td
+/F1 10 Tf
+(POST /api/v1/enquiries - submit a photography enquiry.) Tj
+0 -14 Td
+(POST /api/v1/contact - send a contact message.) Tj
+0 -14 Td
+(POST /api/v1/bookings - submit a booking request.) Tj
+0 -14 Td
+(POST /api/v1/join-applications - apply as photographer, editor, creator, videographer, or) Tj
+0 -14 Td
+(drone operator.) Tj
+0 -14 Td
+(POST /api/v1/partner-applications - submit partner application.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Content) Tj
+0 -18 Td
+/F1 10 Tf
+(GET /api/v1/blogs - list blogs.) Tj
+0 -14 Td
+(GET /api/v1/blogs/{slug} - read a blog.) Tj
+0 -14 Td
+(GET /api/v1/blogs/featured - featured blogs.) Tj
+0 -14 Td
+(GET /api/v1/blogs/categories - blog categories.) Tj
+0 -14 Td
+(GET /api/v1/blogs/tags - blog tags.) Tj
+0 -14 Td
+(GET /api/v1/ideas - list photography ideas.) Tj
+0 -14 Td
+(GET /api/v1/ideas/{slug} - read one idea.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Locations) Tj
+0 -18 Td
+/F1 10 Tf
+(GET /api/v1/locations/states - list active states.) Tj
+0 -14 Td
+(GET /api/v1/locations/states/{stateId}/cities - list cities in a state.) Tj
+0 -14 Td
+(GET /api/v1/locations/cities/search?q=Mumbai - search cities.) Tj
+0 -14 Td
+0 -8 Td
+ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 7 0 R >>
+endobj
+9 0 obj
+<< /Length 1216 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+64 742 Td
+/F2 20 Tf
+(Logged-In User APIs) Tj
+0 -30 Td
+/F1 10 Tf
+0 -6 Td
+/F2 12 Tf
+(User Profile) Tj
+0 -18 Td
+/F1 10 Tf
+(GET /api/v1/users/profile - get your profile.) Tj
+0 -14 Td
+(PUT /api/v1/users/profile - update your profile.) Tj
+0 -14 Td
+(PUT /api/v1/users/change-password - change password.) Tj
+0 -14 Td
+(DELETE /api/v1/users/account - soft delete your account.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Bookings) Tj
+0 -18 Td
+/F1 10 Tf
+(GET /api/v1/bookings/my-bookings - view your booking requests.) Tj
+0 -14 Td
+(GET /api/v1/bookings/{bookingReference} - view booking by reference, for example) Tj
+0 -14 Td
+(CKL-2026-000001.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Notifications) Tj
+0 -18 Td
+/F1 10 Tf
+(GET /api/v1/notifications - list notifications.) Tj
+0 -14 Td
+(PATCH /api/v1/notifications/{id}/read - mark one notification as read.) Tj
+0 -14 Td
+(PATCH /api/v1/notifications/read-all - mark all notifications as read.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(File Upload) Tj
+0 -18 Td
+/F1 10 Tf
+(POST /api/v1/files/{folder} - upload files such as profile image, blog image, idea image,) Tj
+0 -14 Td
+(portfolio, or resume. Send multipart form-data with field name file.) Tj
+0 -14 Td
+0 -8 Td
+ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 9 0 R >>
+endobj
+11 0 obj
+<< /Length 2099 >>
+stream
+BT
+/F1 10 Tf
+14 TL
+64 742 Td
+/F2 20 Tf
+(Admin APIs) Tj
+0 -30 Td
+/F1 10 Tf
+0 -6 Td
+/F2 12 Tf
+(Admin Users) Tj
+0 -18 Td
+/F1 10 Tf
+(GET /api/v1/admin/users - list users with pagination/search.) Tj
+0 -14 Td
+(GET /api/v1/admin/users/{id} - view user.) Tj
+0 -14 Td
+(PATCH /api/v1/admin/users/{id}/status - enable, disable, or lock account.) Tj
+0 -14 Td
+(PATCH /api/v1/admin/users/{id}/roles - update user roles.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Admin Categories) Tj
+0 -18 Td
+/F1 10 Tf
+(POST /api/v1/admin/services - create service.) Tj
+0 -14 Td
+(PUT /api/v1/admin/services/{id} - update service.) Tj
+0 -14 Td
+(DELETE /api/v1/admin/services/{id} - delete service.) Tj
+0 -14 Td
+(Similar admin CRUD exists for /admin/occasions and /admin/business.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Admin Enquiries and Bookings) Tj
+0 -18 Td
+/F1 10 Tf
+(GET /api/v1/admin/enquiries - list enquiries with filters.) Tj
+0 -14 Td
+(PATCH /api/v1/admin/enquiries/{id}/status - update enquiry status.) Tj
+0 -14 Td
+(PATCH /api/v1/admin/enquiries/{id}/assign - assign enquiry.) Tj
+0 -14 Td
+(PUT /api/v1/admin/enquiries/{id}/remarks - add remarks.) Tj
+0 -14 Td
+(GET /api/v1/admin/bookings - list bookings.) Tj
+0 -14 Td
+(PATCH /api/v1/admin/bookings/{id}/status - update booking status.) Tj
+0 -14 Td
+(PATCH /api/v1/admin/bookings/{id}/assign - assign professional.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Admin Content) Tj
+0 -18 Td
+/F1 10 Tf
+(POST /api/v1/admin/blogs - create blog.) Tj
+0 -14 Td
+(PUT /api/v1/admin/blogs/{id} - update blog.) Tj
+0 -14 Td
+(PATCH /api/v1/admin/blogs/{id}/publish - publish or unpublish blog.) Tj
+0 -14 Td
+(DELETE /api/v1/admin/blogs/{id} - delete blog.) Tj
+0 -14 Td
+(Admin CRUD also exists for ideas.) Tj
+0 -14 Td
+0 -8 Td
+0 -6 Td
+/F2 12 Tf
+(Admin Dashboard) Tj
+0 -18 Td
+/F1 10 Tf
+(GET /api/v1/admin/dashboard/summary - business totals.) Tj
+0 -14 Td
+(GET /api/v1/admin/dashboard/monthly-statistics - monthly counts.) Tj
+0 -14 Td
+(GET /api/v1/admin/dashboard/recent-enquiries - recent enquiries.) Tj
+0 -14 Td
+(GET /api/v1/admin/dashboard/recent-bookings - recent bookings.) Tj
+0 -14 Td
+0 -8 Td
+ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 11 0 R >>
+endobj
+xref
+0 13
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000141 00000 n 
+0000000211 00000 n 
+0000000286 00000 n 
+0000001442 00000 n 
+0000001578 00000 n 
+0000003837 00000 n 
+0000003973 00000 n 
+0000005241 00000 n 
+0000005378 00000 n 
+0000007530 00000 n 
+trailer
+<< /Size 13 /Root 1 0 R >>
+startxref
+7668
+%%EOF

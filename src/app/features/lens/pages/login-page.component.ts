@@ -15,7 +15,7 @@ import { LensSeoService } from '../../../core/services/lens-seo.service';
           <img src="assets/images/lens/why-choose-us-transparent.png" alt="" />
         </div>
         <form class="lens-form auth-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
-          <h2>Welcome back</h2>
+          <h2>LOGIN</h2>
           <p>Sign in with your registered email address.</p>
           <label>Email address <input formControlName="email" type="email" autocomplete="email" maxlength="120" /></label>
           <label>Password <input formControlName="password" type="password" autocomplete="current-password" maxlength="80" /></label>
@@ -26,6 +26,7 @@ import { LensSeoService } from '../../../core/services/lens-seo.service';
           </div>
           <p class="form-status success" *ngIf="success">{{ success }}</p>
           <button class="btn primary" type="submit" [disabled]="form.invalid">{{ success ? 'Ready' : 'Login' }}</button>
+          <p class="auth-switch">New to Click-Kaar Lens? <a routerLink="/register">Register</a></p>
           <a class="auth-link" routerLink="/contact">Need help accessing your account?</a>
         </form>
       </div>

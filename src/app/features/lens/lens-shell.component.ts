@@ -16,7 +16,7 @@ import { businessCategories, occasionCategories } from './data/lens-content.data
         <img class="brand-logo" src="assets/images/lens/clickkaar-lens-logo.png" alt="Click-Kaar Lens" width="220" height="88" />
       </a>
       <button class="menu-toggle" type="button" [attr.aria-expanded]="mobileOpen" aria-controls="lens-nav" (click)="toggleMobile()">Menu</button>
-      <nav id="lens-nav" [class.open]="mobileOpen" aria-label="Lens navigation">
+      <nav id="lens-nav" [class.open]="mobileOpen" aria-label="Lens navigation" (click)="closeMobileNav($event)">
         <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
         <div class="nav-group" (mouseenter)="openMenu = 'business'" (mouseleave)="openMenu = ''">
           <button type="button" [attr.aria-expanded]="openMenu === 'business'" (click)="toggleMenu('business')">Business</button>
@@ -75,6 +75,12 @@ export class LensShellComponent {
 
   toggleMenu(menu: string): void {
     this.openMenu = this.openMenu === menu ? '' : menu;
+  }
+
+  closeMobileNav(event: Event): void {
+    if ((event.target as HTMLElement).closest('a')) {
+      this.close();
+    }
   }
 
   @HostListener('document:keydown.escape')
