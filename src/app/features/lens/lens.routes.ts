@@ -8,6 +8,7 @@ import { BlogListPageComponent } from './pages/blog-list-page.component';
 import { BlogDetailPageComponent } from './pages/blog-detail-page.component';
 import { ContactPageComponent } from './pages/contact-page.component';
 import { JoinPageComponent } from './pages/join-page.component';
+import { LoginPageComponent } from './pages/login-page.component';
 import { ServicesPageComponent } from './pages/services-page.component';
 import { SimplePageComponent } from './pages/simple-page.component';
 
@@ -27,6 +28,7 @@ export const lensRoutes: Routes = [
       { path: 'blog/:slug', component: BlogDetailPageComponent },
       { path: 'about', component: SimplePageComponent, data: { page: 'about' } },
       { path: 'contact', component: ContactPageComponent },
+      { path: 'login', component: LoginPageComponent },
       { path: 'partners', component: JoinPageComponent, data: { role: 'partner' } },
       { path: 'join/photographer', component: JoinPageComponent, data: { role: 'photographer' } },
       { path: 'join/editor', component: JoinPageComponent, data: { role: 'editor' } },

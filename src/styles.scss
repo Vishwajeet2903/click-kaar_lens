@@ -658,8 +658,9 @@ main { padding-top: 0; }
 .testimonial-row { grid-template-columns: repeat(3, 1fr); }
 .testimonial-row img { border-radius: 999px; }
 
-.sub-hero { padding: clamp(64px, 10vw, 130px) clamp(18px, 4vw, 58px); background: var(--ink); color: white; }
-.sub-hero p { color: rgba(255,255,255,.78); text-transform: none; font-size: 1.08rem; letter-spacing: 0; }
+.sub-hero { padding: clamp(24px, 5vw, 46px) clamp(18px, 4vw, 58px) clamp(10px, 2.5vw, 20px); background: transparent; color: var(--ink); }
+.sub-hero h1 { font-size: clamp(1.35rem, 3vw, 2.1rem); margin-bottom: 8px; }
+.sub-hero p { color: var(--brand); text-transform: none; font-size: .92rem; letter-spacing: 0; }
 .detail-hero { min-height: 560px; display: grid; grid-template-columns: 1.1fr .9fr; background: var(--ink); color: white; }
 .detail-hero img { width: 100%; height: 100%; }
 .detail-hero div { padding: clamp(36px, 6vw, 86px); align-self: center; }
@@ -681,6 +682,14 @@ input:focus, select:focus, textarea:focus { background: white; border-color: rgb
 .check input { width: auto; min-height: auto; }
 .errors, .form-status.error { display: grid; gap: 4px; color: var(--danger); font-weight: 800; }
 .form-status.success { color: var(--success); font-weight: 800; }
+.auth-section { display: grid; padding-top: clamp(16px, 3vw, 34px); }
+.auth-layout { align-items: center; display: grid; gap: clamp(24px, 5vw, 58px); grid-template-columns: minmax(280px, 1fr) minmax(360px, 480px); margin: 0 auto; max-width: 1120px; width: 100%; }
+.auth-visual { display: grid; min-height: 0; overflow: hidden; place-items: center; }
+.auth-visual img { height: auto; max-height: min(560px, 62vh); max-width: min(100%, 560px); object-fit: contain; object-position: center; width: 100%; }
+.auth-form { justify-self: stretch; width: 100%; }
+.auth-form h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); line-height: 1; margin: 0; }
+.auth-form p { color: var(--muted); font-weight: 700; margin: 0; }
+.auth-link { color: var(--ink); font-weight: 900; text-align: center; }
 .contact-card { align-self: start; }
 .map-placeholder { display: grid; place-items: center; min-height: 180px; border: 1px dashed rgba(17,17,17,.22); background: var(--panel); border-radius: 18px; color: var(--muted); font-weight: 800; }
 .article { max-width: 860px; margin: 0 auto; padding: clamp(42px, 8vw, 92px) 18px; }
@@ -790,6 +799,9 @@ input:focus, select:focus, textarea:focus { background: white; border-color: rgb
   .reviews-window { --review-step: calc(-100% - 1rem); }
   .review-card { flex-basis: 100%; min-height: 240px; }
   .write-review { grid-template-columns: 1fr; }
+  .auth-layout { grid-template-columns: 1fr; }
+  .auth-visual img { max-height: 320px; width: min(100%, 420px); }
+  .auth-form { justify-self: center; }
   .landing-footer { grid-template-columns: 1fr; text-align: left; }
   .footer-top, .footer-grid { grid-template-columns: 1fr 1fr; }
   .card-grid.compact { grid-template-columns: 1fr; }

@@ -24,10 +24,11 @@ import { businessCategories, occasionCategories } from './data/lens-content.data
             <a *ngFor="let item of business" [routerLink]="['/lens/business', item.slug]">{{ item.title }}</a>
           </div>
         </div>
+        <a routerLink="/lens/ideas" routerLinkActive="active">Ideas</a>
         <a routerLink="/lens/blog" routerLinkActive="active">Blog</a>
         <a routerLink="/lens/about" routerLinkActive="active">About</a>
         <a routerLink="/lens/contact" routerLinkActive="active">Contact</a>
-        <a routerLink="/lens/join/photographer" routerLinkActive="active">Join Us</a>
+        <a routerLink="/lens/login" routerLinkActive="active">Login</a>
         <a class="nav-cta" routerLink="/lens/contact">Enquire Now </a>
       </nav>
     </header>
