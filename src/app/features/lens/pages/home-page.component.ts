@@ -27,7 +27,11 @@ import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.
     </section>
     <section class="page-section requirement-section" appScrollReveal="fade-up">
       <div class="requirement-copy">
-        <app-section-heading eyebrow="Quick brief" title="Post your requirement" text="Tell us what you need and the Click-Kaar team will help match the right service, crew and production flow." />
+        <div class="section-heading">
+          <p>Quick brief</p>
+          <h2>Post your requirement</h2>
+          <span>Tell us what you need and the Click-Kaar team will help match the right service, crew and production flow.</span>
+        </div>
         <div class="requirement-points">
           <span>Occasions and business shoots</span>
           <span>Coordinator-assisted planning</span>
@@ -80,7 +84,6 @@ import { ScrollRevealDirective } from '../../../shared/directives/scroll-reveal.
       <div class="reviews-top">
         <div class="section-heading">
           <p>Customer reviews</p>
-          <h2>Trusted by customers for smooth Click-Kaar Lens shoots.</h2>
         </div>
         <div class="carousel-controls" aria-label="Customer review slider controls">
           <button type="button" class="theme-arrow-button previous" (click)="slideReview(-1)" [disabled]="content.testimonials.length < 2" aria-label="Previous reviews">

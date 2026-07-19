@@ -83,7 +83,7 @@ export interface LeadPayload {
   email?: string;
   city: string;
   serviceType: string;
-  preferredDate: string;
+  eventDate: string;
   message: string;
   source: string;
   pageUrl: string;

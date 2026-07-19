@@ -28,6 +28,7 @@ import { businessCategories, occasionCategories } from './data/lens-content.data
         <a routerLink="/blog" routerLinkActive="active">Blog</a>
         <a routerLink="/about" routerLinkActive="active">About</a>
         <a routerLink="/contact" routerLinkActive="active">Contact</a>
+        <a routerLink="/crew-register" routerLinkActive="active">Join</a>
         <a routerLink="/login" routerLinkActive="active">Login</a>
         <a class="nav-cta" routerLink="/contact">Enquire Now </a>
       </nav>
@@ -48,7 +49,7 @@ import { businessCategories, occasionCategories } from './data/lens-content.data
         <div class="footer-grid" appScrollReveal="fade-up">
           <nav aria-label="Occasion photography links"><h3>Occasions</h3><a *ngFor="let item of occasions" [routerLink]="['/occasions', item.slug]">{{ item.shortTitle }}</a></nav>
           <nav aria-label="Business photography links"><h3>Business</h3><a *ngFor="let item of business" [routerLink]="['/business', item.slug]">{{ item.shortTitle }}</a></nav>
-          <nav aria-label="Company links"><h3>Company</h3><a routerLink="/about">About us</a><a routerLink="/contact">Contact</a><a routerLink="/partners">Partners</a><a routerLink="/legal/privacy">Privacy Policy</a></nav>
+          <nav aria-label="Company links"><h3>Company</h3><a routerLink="/about">About us</a><a routerLink="/contact">Contact</a><a routerLink="/partners">Partners</a><a routerLink="/crew-register">Crew Register</a><a routerLink="/legal/privacy">Privacy Policy</a></nav>
           <nav aria-label="Contact links"><h3>Support</h3><a [href]="'tel:' + phone">{{ phone }}</a><a [href]="'mailto:' + email">{{ email }}</a><a [href]="social.instagram" target="_blank" rel="noopener noreferrer">Instagram</a><button type="button" (click)="toTop()">Back to top</button></nav>
         </div>
         <div class="footer-bottom"><span>Copyright (c) 2026 CLICK-KAAR LLP.</span><a routerLink="/legal/terms">Terms & Conditions</a></div>

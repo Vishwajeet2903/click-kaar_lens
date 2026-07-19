@@ -1,6 +1,6 @@
 import { CommonModule, NgOptimizedImage } from '@angular/common';
-import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, ElementRef, forwardRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ControlValueAccessor, FormBuilder, NG_VALUE_ACCESSOR, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import { finalize, Subscription } from 'rxjs';
 import { LensGalleryItem, LensStat } from '../../core/models/lens.models';
@@ -14,9 +14,7 @@ import { futureOrTodayValidator, indianMobileReadyValidator } from '../../core/s
   standalone: true,
   template: `
     <div class="section-heading">
-      <p *ngIf="eyebrow">{{ eyebrow }}</p>
-      <h2>{{ title }}</h2>
-      <span *ngIf="text">{{ text }}</span>
+      <p *ngIf="eyebrow || title">{{ eyebrow || title }}</p>
     </div>
   `,
   imports: [CommonModule]
@@ -160,35 +158,173 @@ export class GalleryGridComponent {
   }
 }
 
+interface CalendarDay {
+  date: Date;
+  iso: string;
+  disabled: boolean;
+}
+
+@Component({
+  selector: 'app-calendar-date-input',
+  standalone: true,
+  imports: [CommonModule],
+  providers: [{
+    provide: NG_VALUE_ACCESSOR,
+    useExisting: forwardRef(() => CalendarDateInputComponent),
+    multi: true
+  }],
+  template: `
+    <div class="calendar-field">
+      <button class="calendar-trigger" type="button" [class.placeholder]="!value" [disabled]="disabled" (click)="toggleCalendar()">
+        <span>{{ displayValue || 'Select date' }}</span>
+        <span class="calendar-icon" aria-hidden="true"></span>
+      </button>
+      <div class="calendar-popover" *ngIf="open">
+        <div class="calendar-header">
+          <button type="button" class="previous" aria-label="Previous month" [disabled]="isPreviousDisabled" (click)="changeMonth(-1)">&lt;</button>
+          <strong>{{ monthLabel }}</strong>
+          <button type="button" aria-label="Next month" (click)="changeMonth(1)">&gt;</button>
+        </div>
+        <div class="calendar-weekdays">
+          <span *ngFor="let day of weekdays">{{ day }}</span>
+        </div>
+        <div class="calendar-grid">
+          <span class="calendar-empty" *ngFor="let empty of leadingEmptyDays"></span>
+          <button
+            type="button"
+            class="calendar-day"
+            *ngFor="let day of calendarDays"
+            [class.today]="day.iso === todayIso"
+            [class.selected]="day.iso === value"
+            [disabled]="day.disabled"
+            (click)="selectDate(day.iso)">
+            {{ day.date.getDate() }}
+          </button>
+        </div>
+      </div>
+    </div>
+  `
+})
+export class CalendarDateInputComponent implements ControlValueAccessor {
+  value = '';
+  disabled = false;
+  open = false;
+  viewDate = new Date();
+  readonly weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  readonly todayIso = this.toIsoDate(new Date());
+  private onChange: (value: string) => void = () => undefined;
+  private onTouched: () => void = () => undefined;
+
+  constructor(private readonly host: ElementRef<HTMLElement>) {}
+
+  @HostListener('document:click', ['$event'])
+  closeFromOutside(event: MouseEvent): void {
+    if (!this.host.nativeElement.contains(event.target as Node)) {
+      this.open = false;
+    }
+  }
+
+  get displayValue(): string {
+    if (!this.value) {
+      return '';
+    }
+    return new Date(`${this.value}T00:00:00`).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' });
+  }
+
+  get monthLabel(): string {
+    return this.viewDate.toLocaleDateString('en-IN', { month: 'long', year: 'numeric' });
+  }
+
+  get isPreviousDisabled(): boolean {
+    const today = new Date();
+    return this.viewDate.getFullYear() === today.getFullYear() && this.viewDate.getMonth() <= today.getMonth();
+  }
+
+  get leadingEmptyDays(): number[] {
+    return Array.from({ length: new Date(this.viewDate.getFullYear(), this.viewDate.getMonth(), 1).getDay() });
+  }
+
+  get calendarDays(): CalendarDay[] {
+    const year = this.viewDate.getFullYear();
+    const month = this.viewDate.getMonth();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    return Array.from({ length: daysInMonth }, (_, index) => {
+      const date = new Date(year, month, index + 1);
+      const iso = this.toIsoDate(date);
+      return { date, iso, disabled: iso < this.todayIso };
+    });
+  }
+
+  writeValue(value: string | null): void {
+    this.value = value || '';
+    this.viewDate = this.value ? new Date(`${this.value}T00:00:00`) : new Date();
+  }
+
+  registerOnChange(fn: (value: string) => void): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this.onTouched = fn;
+  }
+
+  setDisabledState(disabled: boolean): void {
+    this.disabled = disabled;
+  }
+
+  toggleCalendar(): void {
+    if (this.disabled) {
+      return;
+    }
+    this.open = !this.open;
+    this.onTouched();
+  }
+
+  changeMonth(step: number): void {
+    if (step < 0 && this.isPreviousDisabled) {
+      return;
+    }
+    this.viewDate = new Date(this.viewDate.getFullYear(), this.viewDate.getMonth() + step, 1);
+  }
+
+  selectDate(value: string): void {
+    this.value = value;
+    this.open = false;
+    this.onChange(value);
+    this.onTouched();
+  }
+
+  private toIsoDate(date: Date): string {
+    const month = `${date.getMonth() + 1}`.padStart(2, '0');
+    const day = `${date.getDate()}`.padStart(2, '0');
+    return `${date.getFullYear()}-${month}-${day}`;
+  }
+}
+
 @Component({
   selector: 'app-enquiry-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, CalendarDateInputComponent],
   template: `
     <form class="lens-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
       <h2>{{ heading }}</h2>
       <div class="form-grid">
-        <label>Full name <input formControlName="name" autocomplete="name" maxlength="80" /></label>
-        <label>Phone number <input formControlName="phone" autocomplete="tel" maxlength="18" /></label>
-        <label>Email address <input formControlName="email" type="email" autocomplete="email" maxlength="120" /></label>
-        <label>City or location <input formControlName="city" autocomplete="address-level2" maxlength="80" /></label>
-        <label>Shoot category
-          <select formControlName="serviceType">
-            <option value="">Select category</option>
-            <option *ngFor="let option of categories" [value]="option">{{ option }}</option>
-          </select>
-        </label>
-        <label>Preferred date <input formControlName="preferredDate" type="date" /></label>
+        <label>Name <input formControlName="name" autocomplete="name" maxlength="80" /></label>
+        <label>Email <input formControlName="email" type="email" autocomplete="email" maxlength="120" /></label>
+        <label>Mobile <input formControlName="phone" autocomplete="tel" maxlength="18" /></label>
+        <label>Location <input formControlName="city" autocomplete="address-level2" maxlength="80" /></label>
+        <label>Required services <input formControlName="serviceType" maxlength="120" placeholder="Example: photography, Videography, editing" /></label>
+        <label class="calendar-label">Preferred date <app-calendar-date-input formControlName="preferredDate" /></label>
       </div>
-      <label>Message <textarea formControlName="message" rows="4" maxlength="600"></textarea></label>
-      <label class="check"><input type="checkbox" formControlName="consent" /> I agree to be contacted by CLICK-KAAR LLP about this enquiry.</label>
+      <label>Description <textarea formControlName="message" rows="5" maxlength="800" placeholder="Tell us about the shoot, date, deliverables, location, references or budget range."></textarea></label>
       <div class="errors" *ngIf="form.touched && form.invalid">
-        <span *ngIf="form.controls.name.touched && form.controls.name.invalid">Full name is required.</span>
+        <span *ngIf="form.controls.name.touched && form.controls.name.invalid">Name is required.</span>
+        <span *ngIf="form.controls.email.touched && form.controls.email.invalid">Enter a valid email address.</span>
         <span *ngIf="form.controls.phone.touched && form.controls.phone.invalid">Enter a valid mobile number.</span>
-        <span *ngIf="form.controls.city.touched && form.controls.city.invalid">City is required.</span>
-        <span *ngIf="form.controls.serviceType.touched && form.controls.serviceType.invalid">Choose a shoot category.</span>
+        <span *ngIf="form.controls.city.touched && form.controls.city.invalid">Location is required.</span>
+        <span *ngIf="form.controls.serviceType.touched && form.controls.serviceType.invalid">Choose a required service.</span>
         <span *ngIf="form.controls.preferredDate.touched && form.controls.preferredDate.hasError('pastDate')">Date cannot be earlier than today.</span>
-        <span *ngIf="form.controls.consent.touched && form.controls.consent.invalid">Consent is required.</span>
+        <span *ngIf="form.controls.message.touched && form.controls.message.invalid">Description is required.</span>
       </div>
       <p class="form-status success" *ngIf="success">{{ success }}</p>
       <p class="form-status error" *ngIf="error">{{ error }}</p>
@@ -200,19 +336,17 @@ export class EnquiryFormComponent implements OnInit {
   @Input() heading = 'Tell us about your shoot';
   @Input() presetCategory = '';
   @Input() source = 'lens';
-  categories = ['Wedding', 'Pre-Wedding', 'Maternity', 'Baby and Kids', 'Vacation', 'Parties', 'Food Photography', 'Interior Photography', 'Product Photography', 'Corporate Events', 'Brand Videos', 'Profile and Headshots'];
   submitting = false;
   success = '';
   error = '';
   form = this.fb.nonNullable.group({
     name: ['', Validators.required],
     phone: ['', [Validators.required, indianMobileReadyValidator()]],
-    email: ['', Validators.email],
+    email: ['', [Validators.required, Validators.email]],
     city: ['', Validators.required],
     serviceType: ['', Validators.required],
     preferredDate: ['', futureOrTodayValidator()],
-    message: ['', Validators.maxLength(600)],
-    consent: [false, Validators.requiredTrue]
+    message: ['', [Validators.required, Validators.maxLength(800)]]
   });
 
   constructor(private readonly fb: FormBuilder, private readonly leads: LensLeadService, private readonly route: ActivatedRoute, private readonly analytics: LensAnalyticsService) {}
@@ -239,7 +373,7 @@ export class EnquiryFormComponent implements OnInit {
       email: value.email || undefined,
       city: value.city,
       serviceType: value.serviceType,
-      preferredDate: value.preferredDate,
+      eventDate: value.preferredDate,
       message: value.message,
       source: this.source,
       pageUrl: window.location.href
@@ -247,7 +381,7 @@ export class EnquiryFormComponent implements OnInit {
       next: () => {
         this.success = 'Thanks. A Click-Kaar coordinator will contact you shortly.';
         this.analytics.track('enquiry_submitted', { source: this.source });
-        this.form.reset({ consent: false });
+        this.form.reset();
       },
       error: () => {
         this.error = 'We could not send the enquiry right now. Please try WhatsApp or call.';
@@ -264,17 +398,18 @@ export class EnquiryFormComponent implements OnInit {
 @Component({
   selector: 'app-post-requirement-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, CalendarDateInputComponent],
   template: `
     <form class="lens-form requirement-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
-      <h2>Post your requirement</h2>
-      <p>Share the essentials and a Click-Kaar coordinator will help shape the right shoot plan.</p>
+      <!-- <h2>Post your requirement</h2>
+      <p>Share the essentials and a Click-Kaar coordinator will help shape the right shoot plan.</p> -->
       <div class="form-grid">
         <label>Name <input formControlName="name" autocomplete="name" maxlength="80" /></label>
         <label>Email <input formControlName="email" type="email" autocomplete="email" maxlength="120" /></label>
         <label>Mobile <input formControlName="phone" autocomplete="tel" maxlength="18" /></label>
         <label>Location <input formControlName="city" autocomplete="address-level2" maxlength="80" /></label>
-        <label>Required services <input formControlName="serviceType" maxlength="120" placeholder="Example: wedding photography, reels, editing" /></label>
+        <label>Required services <input formControlName="serviceType" maxlength="120" placeholder="Example: photography, Videography, editing" /></label>
+        <label class="calendar-label">Preferred date <app-calendar-date-input formControlName="preferredDate" /></label>
       </div>
       <label>Description <textarea formControlName="message" rows="5" maxlength="800" placeholder="Tell us about the shoot, date, deliverables, location, references or budget range."></textarea></label>
       <div class="errors" *ngIf="form.touched && form.invalid">
@@ -283,6 +418,7 @@ export class EnquiryFormComponent implements OnInit {
         <span *ngIf="form.controls.phone.touched && form.controls.phone.invalid">Enter a valid mobile number.</span>
         <span *ngIf="form.controls.city.touched && form.controls.city.invalid">Location is required.</span>
         <span *ngIf="form.controls.serviceType.touched && form.controls.serviceType.invalid">Choose a required service.</span>
+        <span *ngIf="form.controls.preferredDate.touched && form.controls.preferredDate.hasError('pastDate')">Date cannot be earlier than today.</span>
         <span *ngIf="form.controls.message.touched && form.controls.message.invalid">Description is required.</span>
       </div>
       <p class="form-status success" *ngIf="success">{{ success }}</p>
@@ -301,6 +437,7 @@ export class PostRequirementFormComponent {
     phone: ['', [Validators.required, indianMobileReadyValidator()]],
     city: ['', Validators.required],
     serviceType: ['', Validators.required],
+    preferredDate: ['', futureOrTodayValidator()],
     message: ['', [Validators.required, Validators.maxLength(800)]]
   });
 
@@ -322,7 +459,7 @@ export class PostRequirementFormComponent {
       email: value.email,
       city: value.city,
       serviceType: value.serviceType,
-      preferredDate: '',
+      eventDate: value.preferredDate,
       message: value.message,
       source: 'post-requirement',
       pageUrl: window.location.href

@@ -3,8 +3,10 @@ package com.clickkaar.lens.service.impl;
 import com.clickkaar.lens.dto.request.*;
 import com.clickkaar.lens.dto.response.PageResponse;
 import com.clickkaar.lens.dto.response.UserResponse;
+import com.clickkaar.lens.config.DataInitializer;
 import com.clickkaar.lens.entity.Role;
 import com.clickkaar.lens.entity.User;
+import com.clickkaar.lens.exception.BadRequestException;
 import com.clickkaar.lens.exception.ResourceNotFoundException;
 import com.clickkaar.lens.mapper.LensMapper;
 import com.clickkaar.lens.repository.RoleRepository;
@@ -45,7 +47,9 @@ public class UserServiceImpl implements UserService {
   @Override
   @Transactional
   public void deleteAccount() {
-    currentUser().setDeleted(true);
+    User user = currentUser();
+    ensureNotSuperAdmin(user);
+    user.setDeleted(true);
   }
 
   @Override
@@ -65,6 +69,7 @@ public class UserServiceImpl implements UserService {
   @Transactional
   public UserResponse updateStatus(Long id, AdminUserStatusRequest request) {
     User user = findUser(id);
+    ensureNotSuperAdmin(user);
     if (request.enabled() != null) user.setEnabled(request.enabled());
     if (request.accountLocked() != null) user.setAccountLocked(request.accountLocked());
     return mapper.user(user);
@@ -74,6 +79,7 @@ public class UserServiceImpl implements UserService {
   @Transactional
   public UserResponse updateRoles(Long id, AdminUserRolesRequest request) {
     User user = findUser(id);
+    ensureNotSuperAdmin(user);
     Set<Role> roles = request.roles().stream()
         .map(roleName -> roleRepository.findByName(roleName).orElseThrow(() -> new ResourceNotFoundException("Role not found: " + roleName)))
         .collect(Collectors.toSet());
@@ -88,5 +94,11 @@ public class UserServiceImpl implements UserService {
 
   private User findUser(Long id) {
     return userRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("User not found"));
+  }
+
+  private void ensureNotSuperAdmin(User user) {
+    if (DataInitializer.SUPER_ADMIN_EMAIL.equalsIgnoreCase(user.getEmail())) {
+      throw new BadRequestException("Super admin account cannot be modified or deleted");
+    }
   }
 }

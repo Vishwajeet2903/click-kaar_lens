@@ -1,14 +1,14 @@
 export const environment = {
   production: true,
-  apiBaseUrl: '',
-  leadEndpoint: '/api/leads',
+  apiBaseUrl: 'http://localhost:8080',
+  leadEndpoint: '/api/v1/enquiries',
   partnerEndpoints: {
-    photographer: '/api/partners/photographers',
-    editor: '/api/partners/editors',
-    coordinator: '/api/partners/project-coordinators',
-    partner: '/api/partners/business'
+    photographer: '/api/v1/join-applications',
+    editor: '/api/v1/join-applications',
+    coordinator: '/api/v1/join-applications',
+    partner: '/api/v1/partner-applications'
   },
-  mockData: true,
+  mockData: false,
   whatsappNumber: '919096820033',
   contactPhone: '+91 9096820033',
   contactEmail: 'lens@click-kaar.com',

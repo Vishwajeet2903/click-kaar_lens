@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { LensSeoService } from '../../../core/services/lens-seo.service';
 
 @Component({
@@ -41,7 +41,7 @@ export class LoginPageComponent implements OnInit {
     remember: [true]
   });
 
-  constructor(private readonly fb: FormBuilder, private readonly seo: LensSeoService) {}
+  constructor(private readonly fb: FormBuilder, private readonly router: Router, private readonly seo: LensSeoService) {}
 
   ngOnInit(): void {
     this.seo.update({ title: 'Login | Click-Kaar Lens', description: 'Login to your Click-Kaar Lens account.' });
@@ -50,6 +50,27 @@ export class LoginPageComponent implements OnInit {
   submit(): void {
     this.form.markAllAsTouched();
     if (this.form.invalid) return;
+    const value = this.form.getRawValue();
+    if (value.email.toLowerCase() === 'clickkaar@lens.com' && value.password === 'lens@123') {
+      this.router.navigateByUrl('/super-admin');
+      return;
+    }
+    if (value.email.toLowerCase() === 'sales@click-kaar.com' && value.password === 'sales@123') {
+      this.router.navigateByUrl('/sales-dashboard');
+      return;
+    }
+    if (value.email.toLowerCase() === 'pm@click-kaar.com' && value.password === 'pm@123') {
+      this.router.navigateByUrl('/project-manager-dashboard');
+      return;
+    }
+    if (value.email.toLowerCase() === 'coordinator@click-kaar.com' && value.password === 'coordinator@123') {
+      this.router.navigateByUrl('/project-coordinator-dashboard');
+      return;
+    }
+    if (value.email.toLowerCase() === 'crew@click-kaar.com' && value.password === 'crew@123') {
+      this.router.navigateByUrl('/crew-dashboard');
+      return;
+    }
     this.success = 'Login form is ready to connect to authentication.';
   }
 }

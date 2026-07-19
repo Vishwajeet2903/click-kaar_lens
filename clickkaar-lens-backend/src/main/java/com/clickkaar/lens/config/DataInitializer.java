@@ -14,6 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 @Component
 @RequiredArgsConstructor
 public class DataInitializer implements CommandLineRunner {
+  public static final String SUPER_ADMIN_EMAIL = "clickkaar@lens.com";
+  private static final String SUPER_ADMIN_PASSWORD = "lens@123";
+
   private final AppProperties properties;
   private final RoleRepository roles;
   private final UserRepository users;
@@ -28,6 +31,7 @@ public class DataInitializer implements CommandLineRunner {
   @Transactional
   public void run(String... args) {
     for (RoleName name : RoleName.values()) roles.findByName(name).orElseGet(() -> { Role r = new Role(); r.setName(name); return roles.save(r); });
+    seedSuperAdmin();
     if (!users.existsByEmailIgnoreCase(properties.admin().email())) {
       User admin = new User();
       admin.setFirstName("CLICK-KAAR");
@@ -52,6 +56,21 @@ public class DataInitializer implements CommandLineRunner {
     if (states.count() == 0) {
       State mh = state("Maharashtra", "MH"); State ka = state("Karnataka", "KA"); city("Mumbai", mh); city("Pune", mh); city("Bengaluru", ka);
     }
+  }
+
+  private void seedSuperAdmin() {
+    User superAdmin = users.findByEmailIgnoreCase(SUPER_ADMIN_EMAIL).orElseGet(User::new);
+    superAdmin.setFirstName("CLICK-KAAR");
+    superAdmin.setLastName("Super Admin");
+    superAdmin.setEmail(SUPER_ADMIN_EMAIL);
+    superAdmin.setPhone("9999999998");
+    superAdmin.setPassword(passwordEncoder.encode(SUPER_ADMIN_PASSWORD));
+    superAdmin.setEmailVerified(true);
+    superAdmin.setEnabled(true);
+    superAdmin.setAccountLocked(false);
+    superAdmin.setDeleted(false);
+    superAdmin.setRoles(Set.of(roles.findByName(RoleName.ROLE_ADMIN).orElseThrow()));
+    users.save(superAdmin);
   }
 
   private void service(String name, String slug, String description, BigDecimal price) { ServiceCategory c = new ServiceCategory(); c.setName(name); c.setSlug(slug); c.setDescription(description); c.setStartingPrice(price); services.save(c); }
